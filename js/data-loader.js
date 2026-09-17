@@ -84,11 +84,19 @@
       } catch (e) { lastError = e; }
     } else {
       if (remoteUrl) {
-        try {
-          const data = await loadRemote(remoteUrl);
-          writeLS(SOURCE_KEY, 'google-sheets');
-          return data;
-        } catch (e) { lastError = e; }
+        // نقطة نهاية Apps Script تُعيد أحيانًا 404 مؤقتًا عند النشر —
+        // محاولة ثانية بعد 900ms قبل العدول للنسخة المرفقة.
+        let done = false;
+        for (let attempt = 0; attempt < 2 && !done; attempt++) {
+          try {
+            const data = await loadRemote(remoteUrl);
+            writeLS(SOURCE_KEY, 'google-sheets');
+            return data;
+          } catch (e) {
+            lastError = e;
+            if (attempt === 0) await new Promise(function (r) { setTimeout(r, 900); });
+          }
+        }
       }
 
       if (attemptOrder.indexOf('google-run') !== -1) {

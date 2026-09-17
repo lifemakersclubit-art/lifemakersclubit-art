@@ -263,6 +263,26 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function escAttr(s) { return esc(s); }
 
+  /* ---------- اللوجو الافتتاحي: يُعرض عند أول فتح أو Refresh فقط ----------
+   * عند النقر على رابط من الشريط الجانبي نحو صفحة أخرى نضع كلمة
+   * sessionStorage، فتُتخطَّى الشاشة الافتتاحية دون أن تظهر أثناء التنقل. */
+  function bindNavSplashSkip() {
+    document.addEventListener('click', function (e) {
+      let t = e.target;
+      while (t && t !== document) {
+        if (t.tagName === 'A' && t.getAttribute && t.getAttribute('href')) {
+          const h = t.getAttribute('href');
+          if (t.classList.contains('nav-link') || /\.html$/.test(h)) {
+            try { sessionStorage.setItem('camp_splash_skip', '1'); } catch (err) { /* ignore */ }
+            return;
+          }
+        }
+        t = t.parentNode;
+      }
+    });
+  }
+  bindNavSplashSkip();
+
   window.DashboardBootstrap = { bootstrap: bootstrap };
   window.AppHelpers = { esc: esc, escAttr: escAttr };
 

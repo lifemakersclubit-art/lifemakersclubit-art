@@ -26,6 +26,12 @@
 <script>
 (function () {
   var b = document.body, s = document.getElementById('camp-splash');
+  var skip = false;
+  try { if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('camp_splash_skip') === '1') { sessionStorage.removeItem('camp_splash_skip'); skip = true; } } catch (e) {}
+  if (skip) {
+    if (s && s.parentNode) s.parentNode.removeChild(s);
+    return;
+  }
   if (b) b.classList.add('splash-shown');
   setTimeout(function () {
     if (!s) return;

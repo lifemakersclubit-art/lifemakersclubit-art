@@ -26,6 +26,12 @@
 <script>
 (function () {
   var b = document.body, s = document.getElementById('camp-splash');
+  var skip = false;
+  try { if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('camp_splash_skip') === '1') { sessionStorage.removeItem('camp_splash_skip'); skip = true; } } catch (e) {}
+  if (skip) {
+    if (s && s.parentNode) s.parentNode.removeChild(s);
+    return;
+  }
   if (b) b.classList.add('splash-shown');
   setTimeout(function () {
     if (!s) return;
@@ -82,18 +88,6 @@
             </div>
           </div>
           <div class="card-body flush"><div id="per-exam-table"></div></div>
-        </div>
-      </section>
-
-      <section class="card note">
-        <div class="card-head"><div class="card-title">قيود التحليل</div></div>
-        <div class="card-body">
-          <ul class="list-dense">
-            <li>نموذج <b>القيادة (Leadership)</b>: لا يحمل هوية → لا يوجد ربط قبل/بعد على مستوى المستخدم. تُستخدم المقارنة المُجمّعة فقط مع بيان وجوب تفسيرها بحذر.</li>
-            <li>نموذج <b>المحتوى (Content)</b>: يظهر في الاختبار القبلي فقط ولا توجد نسخة بعدية منفصلة ضمن بيانات postquiz.</li>
-            <li>نموذج <b>Google Sheets متقدم</b>: يظهر في الاختبار القبلي فقط.</li>
-            <li>يُحسب التحسن من فروق الدرجات/النسب فقط وليس من متوسطات مجموعات غير مرتبطة.</li>
-          </ul>
         </div>
       </section>
     </main>
