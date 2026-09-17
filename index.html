@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="النظرة التنفيذية — كامب جذور — نوادي صناع الحياة بالجامعات المصرية">
+<title>كامب جذور — النظرة التنفيذية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="index">
+<div class="splash" id="camp-splash">
+  <div class="splash-inner">
+    <span class="splash-ring"></span>
+    <span class="splash-ring r2"></span>
+    <img class="splash-logo" src="assets/logo-nouadi.png" alt="شعار نوادي صناع الحياة">
+    <div class="splash-title">كامب جذور</div>
+    <div class="splash-sub">نوادي صناع الحياة بالجامعات المصرية</div>
+  </div>
+</div>
+<script>
+(function () {
+  var b = document.body, s = document.getElementById('camp-splash');
+  if (b) b.classList.add('splash-shown');
+  setTimeout(function () {
+    if (!s) return;
+    s.classList.add('splash-done');
+    if (b) b.classList.remove('splash-shown');
+    setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 700);
+  }, 3000);
+})();
+</script><div id="app-state"></div>
+
+<div class="app-shell">
+  <aside class="app-sidebar" id="page-sidebar" aria-label="التنقل"></aside>
+  <div class="app-main">
+    <header class="app-header" id="page-header"></header>
+    <div class="filter-wrap">
+      <div id="filter-bar"></div>
+      <div class="filter-stats-line" id="filter-stats"></div>
+    </div>
+    <main class="content">
+      <section aria-labelledby="exec-intro-title">
+        <h2 id="exec-intro-title" class="card-title">لمحة تنفيذية</h2>
+        <p class="page-intro">لوحة متابعة تشغيلية لقيادة «كامب جذور» — عمليات الحضور، وتقييم الجلسات، والتاسكات، وتحصيل الاختبارات عبر الفترة المحددة في الفلاتر أعلاه.</p>
+      </section>
+
+      <section class="kpi-grid" id="kpi-overview"></section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-primary)"></span>الحضور اليومي</div>
+              <div class="card-sub">عدد السجلات لكل يوم حدث</div>
+            </div>
+            <div class="chart-tools"><button class="btn-export" data-export="chart-att-trend">تصدير PNG</button></div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="chart-att-trend" class="chart"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-accent)"></span>توزيع الجلسات حسب المسار</div>
+              <div class="card-sub">نسبة حضور المسارات التنفيذية</div>
+            </div>
+            <div class="chart-tools"><button class="btn-export" data-export="chart-att-track">تصدير PNG</button></div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="chart-att-track" class="chart"></div></div></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title"><span class="title-dot" style="background:var(--c-primary-2)"></span>خريطة الحضور الحرارية</div>
+            <div class="card-sub">يوم × مسار — شدة اللون تعكس عدد الحاضرين</div>
+          </div>
+          <div class="chart-tools"><button class="btn-export" data-export="chart-att-heat">تصدير PNG</button></div>
+        </div>
+        <div class="card-body flush"><div class="chart-box lg"><div id="chart-att-heat" class="chart"></div></div></div>
+      </section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-primary)"></span>متوسط تقييم محاور الجلسات</div>
+              <div class="card-sub">المقياس 1–4 (ممتاز=4) — قيم محسوبة على المتاح فقط</div>
+            </div>
+            <div class="chart-tools"><button class="btn-export" data-export="chart-fb-dims">تصدير PNG</button></div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="chart-fb-dims" class="chart"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-accent)"></span>حجم الاستجابات ومتوسط التقييم يوميًا</div>
+              <div class="card-sub">عدد الاستجابات (أعمدة) × المتوسط (خط)</div>
+            </div>
+            <div class="chart-tools"><button class="btn-export" data-export="chart-fb-trend">تصدير PNG</button></div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="chart-fb-trend" class="chart"></div></div></div>
+        </div>
+      </section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-primary)"></span>التاسكات حسب المساق</div>
+              <div class="card-sub">المساقات في بيانات التسليم</div>
+            </div>
+            <div class="chart-tools"><button class="btn-export" data-export="chart-asg-track">تصدير PNG</button></div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="chart-asg-track" class="chart"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-accent)"></span>القياس: المقارنة قبل / بعد</div>
+              <div class="card-sub">متوسط مئوي لكل نموذج اختبار — على النتائج الصحيحة فقط</div>
+            </div>
+            <div class="chart-tools"><button class="btn-export" data-export="chart-assess-agg">تصدير PNG</button></div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="chart-assess-agg" class="chart"></div></div></div>
+        </div>
+      </section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-ok)"></span>حركة الأداء بين الفترتين</div>
+              <div class="card-sub">الفترة المحددة مقابل نافذة مساوية لها قبلها مباشرة</div>
+            </div>
+          </div>
+          <div class="card-body"><div id="movement-table"></div></div>
+        </div>
+        <div class="card note">
+          <div class="card-head">
+            <div class="card-title">تنبيهات وملاحظات تشغيلية</div>
+          </div>
+          <div class="card-body" id="alerts"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script src="data/bundled-data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data-loader.js"></script>
+<script src="js/data-cleaner.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/app.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

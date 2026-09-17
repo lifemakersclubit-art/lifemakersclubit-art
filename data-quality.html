@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="جودة البيانات — كامب جذور">
+<title>كامب جذور — جودة البيانات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="data-quality">
+<div class="splash" id="camp-splash">
+  <div class="splash-inner">
+    <span class="splash-ring"></span>
+    <span class="splash-ring r2"></span>
+    <img class="splash-logo" src="assets/logo-nouadi.png" alt="شعار نوادي صناع الحياة">
+    <div class="splash-title">كامب جذور</div>
+    <div class="splash-sub">نوادي صناع الحياة بالجامعات المصرية</div>
+  </div>
+</div>
+<script>
+(function () {
+  var b = document.body, s = document.getElementById('camp-splash');
+  if (b) b.classList.add('splash-shown');
+  setTimeout(function () {
+    if (!s) return;
+    s.classList.add('splash-done');
+    if (b) b.classList.remove('splash-shown');
+    setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 700);
+  }, 3000);
+})();
+</script><div id="app-state"></div>
+
+<div class="app-shell">
+  <aside class="app-sidebar" id="page-sidebar" aria-label="التنقل"></aside>
+  <div class="app-main">
+    <header class="app-header" id="page-header"></header>
+    <div class="filter-wrap">
+      <div id="filter-bar"></div>
+      <div class="filter-stats-line" id="filter-stats"></div>
+    </div>
+    <main class="content">
+      <section>
+        <h2 class="card-title">جودة البيانات</h2>
+        <p class="page-intro">حالة البيانات الخام كما وردت في ملف «الإدارة المركزية لكامب جذور» قبل التحليل — عدّادات الصفوف المفقودة والمكررة والخارج-نطاق. <b>لا تُحذف أي بيانات خام؛</b> كل صف موصوف بعلامات تحقق داخل منظومة التنظيف.</p>
+      </section>
+
+      <section class="kpi-grid" id="kpi-dq"></section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head"><div class="card-title">الحضور (attendence)</div></div>
+          <div class="card-body"><div id="dq-attendence"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">التقييم (feedback)</div></div>
+          <div class="card-body"><div id="dq-feedback"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">التاسكات (assignment)</div></div>
+          <div class="card-body"><div id="dq-assignment"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">الاختبارات القبلية (prequiz)</div></div>
+          <div class="card-body"><div id="dq-prequiz"></div></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><div class="card-title">الاختبارات البعدية (postquiz)</div></div>
+        <div class="card-body"><div id="dq-postquiz"></div></div>
+      </section>
+
+      <section class="card note">
+        <div class="card-head"><div class="card-title">ملاحظات عامة على الملف</div></div>
+        <div class="card-body"><ul class="list-dense" id="dq-notes"></ul></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script src="data/bundled-data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data-loader.js"></script>
+<script src="js/data-cleaner.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/app.js"></script>
+<script src="js/data-quality.js"></script>
+</body>
+</html>

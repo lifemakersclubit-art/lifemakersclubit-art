@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="التاسكات — كامب جذور">
+<title>كامب جذور — التاسكات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="assignments">
+<div class="splash" id="camp-splash">
+  <div class="splash-inner">
+    <span class="splash-ring"></span>
+    <span class="splash-ring r2"></span>
+    <img class="splash-logo" src="assets/logo-nouadi.png" alt="شعار نوادي صناع الحياة">
+    <div class="splash-title">كامب جذور</div>
+    <div class="splash-sub">نوادي صناع الحياة بالجامعات المصرية</div>
+  </div>
+</div>
+<script>
+(function () {
+  var b = document.body, s = document.getElementById('camp-splash');
+  if (b) b.classList.add('splash-shown');
+  setTimeout(function () {
+    if (!s) return;
+    s.classList.add('splash-done');
+    if (b) b.classList.remove('splash-shown');
+    setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 700);
+  }, 3000);
+})();
+</script><div id="app-state"></div>
+
+<div class="app-shell">
+  <aside class="app-sidebar" id="page-sidebar" aria-label="التنقل"></aside>
+  <div class="app-main">
+    <header class="app-header" id="page-header"></header>
+    <div class="filter-wrap">
+      <div id="filter-bar"></div>
+      <div class="filter-stats-line" id="filter-stats"></div>
+    </div>
+    <main class="content">
+      <section>
+        <h2 class="card-title">التاسكات</h2>
+        <p class="page-intro">تسليم التاسكات عبر 3 مساقات (Google Sheets، Branding، تسويق المحتوى).</p>
+        <div class="alert warn"><span class="a-ico">⚠</span><span>لا يُحسب «معدل الإنجاز» (Completion Rate) لأن بيانات الملف لا تحوي قائمة إلزامية/معيار تسليم؛ المتاح هو عدد التسليمات وجودة الحقول. كما أن اسم المسار في التاسكات لا يطابق اسم المسار في الحضور حرفيًا — الربط بينهما يتم عبر خريطة أسماء (Google Sheets ← IT، Branding ← تصميم جرافيك) ولا دمج تلقائي للتقارير.</span></div>
+      </section>
+
+      <section class="kpi-grid" id="kpi-assignments"></section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-primary)"></span>التوزيع حسب المساق</div>
+              <div class="card-sub">عدد التسليمات لكل مساق</div>
+            </div>
+            <div class="chart-tools"><button class="btn-export" data-export="asg-track">تصدير PNG</button></div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="asg-track" class="chart"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-accent)"></span>تسليم يومي</div>
+              <div class="card-sub">عدد التسليمات لكل تاريخ</div>
+            </div>
+            <div class="chart-tools"><button class="btn-export" data-export="asg-trend">تصدير PNG</button></div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="asg-trend" class="chart"></div></div></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title"><span class="title-dot" style="background:var(--c-primary-2)"></span>جدول المساقات</div>
+            <div class="card-sub">الحصيلة وجودة الحقول لكل مساق</div>
+          </div>
+        </div>
+        <div class="card-body flush"><div id="asg-table"></div></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script src="data/bundled-data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data-loader.js"></script>
+<script src="js/data-cleaner.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/app.js"></script>
+<script src="js/assignments.js"></script>
+</body>
+</html>

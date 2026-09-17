@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ملخص التسجيل — كامب جذور">
+<title>كامب جذور — ملخص التسجيل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="registration">
+<div class="splash" id="camp-splash">
+  <div class="splash-inner">
+    <span class="splash-ring"></span>
+    <span class="splash-ring r2"></span>
+    <img class="splash-logo" src="assets/logo-nouadi.png" alt="شعار نوادي صناع الحياة">
+    <div class="splash-title">كامب جذور</div>
+    <div class="splash-sub">نوادي صناع الحياة بالجامعات المصرية</div>
+  </div>
+</div>
+<script>
+(function () {
+  var b = document.body, s = document.getElementById('camp-splash');
+  if (b) b.classList.add('splash-shown');
+  setTimeout(function () {
+    if (!s) return;
+    s.classList.add('splash-done');
+    if (b) b.classList.remove('splash-shown');
+    setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 700);
+  }, 3000);
+})();
+</script><div id="app-state"></div>
+
+<div class="app-shell">
+  <aside class="app-sidebar" id="page-sidebar" aria-label="التنقل"></aside>
+  <div class="app-main">
+    <header class="app-header" id="page-header"></header>
+    <div class="filter-wrap">
+      <div id="filter-bar"></div>
+      <div class="filter-stats-line" id="filter-stats"></div>
+    </div>
+    <main class="content">
+      <section>
+        <h2 class="card-title">ملخص التسجيل</h2>
+        <p class="page-intro">ملخص سريع لبيانات استمارة التسجيل (camp_registration): الأعداد الكلية، التوزيعات، متوسطات التقييم الذاتي للمهارات، الجاهزية الرقمية، ونقاط القوة والضعف المستخلصة من الأرقام مباشرة. <b>لا تُعرض أي بيانات هوية</b> (رقم قومي/هاتف/إيميل).</p>
+        <div class="alert info"><span class="a-ico">ℹ</span><span>منهجية: تظهر النسب من إجابات المسجلين الفعلية فقط في الفترة المحددة. مهارات «الثقة بالنشاط» (Leadership → Follow-up) على مقياس 1–5. مؤشرات الجاهزية (حصان/هاتف/خدمات Google) من خانات نعم/لا.</span></div>
+      </section>
+
+      <section class="kpi-grid" id="kpi-registration"></section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:#34D399"></span>نقاط القوة من الأرقام</div>
+              <div class="card-sub">أعلى المهارات تقييمًا وأعلى مؤشرات الجاهزية</div>
+            </div>
+          </div>
+          <div class="card-body flush"><ul class="list-dense" id="reg-strengths"></ul></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:#F87171"></span>نقاط الضعف / فرص التحسين</div>
+              <div class="card-sub">أدنى المهارات تقييمًا وأقل مؤشرات الجاهزية</div>
+            </div>
+          </div>
+          <div class="card-body flush"><ul class="list-dense" id="reg-weaknesses"></ul></div>
+        </div>
+      </section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-primary)"></span>متوسطات التقييم الذاتي للمهارات</div>
+              <div class="card-sub">مقياس 1–5 — لكل مهارة المتوسط وعدد المستجيبين</div>
+            </div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="reg-skills" class="chart"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-accent)"></span>توزيع المحافظات</div>
+              <div class="card-sub">أعلى 8 محافظات من حيث عدد المسجلين</div>
+            </div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="reg-governorates" class="chart"></div></div></div>
+        </div>
+      </section>
+
+      <section class="two-col">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-primary-2)"></span>التوزيع على اللجان</div>
+              <div class="card-sub">اللجنة المطلوبة/المسجلة من كل متقدم</div>
+            </div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="reg-committees" class="chart"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><span class="title-dot" style="background:var(--c-accent-light)"></span>المسارات المطلوبة (Track 1 + Track 2)</div>
+              <div class="card-sub">عدد الطلبات لكل مسار مع التكرارات</div>
+            </div>
+          </div>
+          <div class="card-body flush"><div class="chart-box"><div id="reg-tracks" class="chart"></div></div></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title"><span class="title-dot" style="background:var(--c-primary)"></span>الجاهزية الرقمية للمسجلين</div>
+            <div class="card-sub">نسبة من أكدوا امتلاكهم/استخدامهم للأداة</div>
+          </div>
+        </div>
+        <div class="card-body"><div id="reg-readiness"></div></div>
+      </section>
+
+      <section class="card note">
+        <div class="card-head"><div class="card-title">ملاحظات</div></div>
+        <div class="card-body">
+          <ul class="list-dense" id="reg-notes"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script src="data/bundled-data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data-loader.js"></script>
+<script src="js/data-cleaner.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/app.js"></script>
+<script src="js/registration.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="التقرير التنفيذي — كامب جذور">
+<title>كامب جذور — التقرير التنفيذي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="executive-report" data-mode="report" class="mode-report nocontentanim">
+<div class="splash" id="camp-splash">
+  <div class="splash-inner">
+    <span class="splash-ring"></span>
+    <span class="splash-ring r2"></span>
+    <img class="splash-logo" src="assets/logo-nouadi.png" alt="شعار نوادي صناع الحياة">
+    <div class="splash-title">كامب جذور</div>
+    <div class="splash-sub">نوادي صناع الحياة بالجامعات المصرية</div>
+  </div>
+</div>
+<script>
+(function () {
+  var b = document.body, s = document.getElementById('camp-splash');
+  if (b) b.classList.add('splash-shown');
+  setTimeout(function () {
+    if (!s) return;
+    s.classList.add('splash-done');
+    if (b) b.classList.remove('splash-shown');
+    setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 700);
+  }, 3000);
+})();
+</script><div id="app-state"></div>
+
+<h1 style="margin:20px" class="sr-only">التقرير التنفيذي — كامب جذور</h1>
+
+<main class="content report-page">
+  <section class="card report-cover">
+    <img src="assets/logo-nouadi.png" alt="شعار نوادي صناع الحياة" class="report-logo">
+    <h1>التقرير التنفيذي لمتابعة تشغيل «كامب جذور»</h1>
+    <div class="sub">نوادي صناع الحياة بالجامعات المصرية — الإدارة المركزية لكامب جذور</div>
+    <div class="meta" id="report-meta">جارٍ التجهيز…</div>
+  </section>
+
+  <section class="card" id="report-snapshot">
+    <div class="card-head"><div class="card-title">الملخص التنفيذي</div></div>
+    <div class="card-body"><div id="report-exec-summary"></div></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><div class="card-title"><span class="title-dot" style="background:var(--c-primary)"></span>واقع التشغيل بالأرقام</div></div>
+    <div class="card-body"><div class="kpi-grid" id="report-kpis"></div></div>
+  </section>
+
+  <section>
+    <h2 class="card-title">1 · الحضور</h2>
+    <div class="card">
+      <div class="card-body">
+        <div class="chart-box"><div id="report-att-trend" class="chart"></div></div>
+        <div class="stat-row">
+          <div class="stat-cell"><div class="sc-label">إجمالي السجلات</div><div class="sc-value" id="report-att-n"></div></div>
+          <div class="stat-cell"><div class="sc-label">مشاركون نشطون</div><div class="sc-value" id="report-att-uniq"></div></div>
+          <div class="stat-cell"><div class="sc-label">أيام فعالة</div><div class="sc-value" id="report-att-days"></div></div>
+          <div class="stat-cell"><div class="sc-label">أعلى يوم</div><div class="sc-value" id="report-att-high"></div></div>
+          <div class="stat-cell"><div class="sc-label">أقل يوم</div><div class="sc-value" id="report-att-low"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="card-title">2 · تقييم الجلسات</h2>
+    <div class="card">
+      <div class="card-body">
+        <div class="chart-box"><div id="report-fb-radar" class="chart"></div></div>
+        <div class="stat-row">
+          <div class="stat-cell"><div class="sc-label">استجابات صالحة</div><div class="sc-value" id="report-fb-n"></div></div>
+          <div class="stat-cell"><div class="sc-label">المتوسط العام</div><div class="sc-value" id="report-fb-avg"></div></div>
+          <div class="stat-cell"><div class="sc-label">نسبة المشاكل التقنية</div><div class="sc-value" id="report-fb-tech"></div></div>
+        </div>
+        <div id="report-trainers"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="card-title">3 · التاسكات</h2>
+    <div class="card">
+      <div class="card-body">
+        <div id="report-assignments"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="card-title">4 · القياس (قبل / بعد)</h2>
+    <div class="card">
+      <div class="card-body">
+        <div class="chart-box"><div id="report-assess" class="chart"></div></div>
+        <div id="report-paired" class="stat-row"></div>
+        <div id="report-per-exam"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="card-title">5 · مصفوفة المسارات</h2>
+    <div class="card">
+      <div class="card-body flush"><div id="report-matrix"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="card-title">6 · جودة البيانات</h2>
+    <div class="card">
+      <div class="card-body"><div id="report-dq" class="list-dense"></div></div>
+    </div>
+  </section>
+
+  <section class="card note">
+    <div class="card-head"><div class="card-title">منهجية وتحفظات</div></div>
+    <div class="card-body">
+      <ul class="list-dense">
+        <li>جميع الأرقام محسوبة من ملف البيانات الأصلي «الإدارة المركزية لكامب جذور.xlsx» عبر منظومة تحقق لا تحذف أي صف خام.</li>
+        <li>المقياس: ممتاز=4، جيد جدًا=3، جيد=2، يحتاج تطوير=1. المتوسطات تُحسب على الإجابات المتاحة فقط.</li>
+        <li>المقارنة القبلية/البعدية: أسئلة النماذج مختلفة قبليًا/بعديًا، لذلك تُعرض كنسب مئوية ولا تُقرأ كدرجات خام. المقارنة المزدوجة (Paired) موثوقة فقط للنماذج التي تحمل هوية (Google Sheets وبراندنج/AI).</li>
+        <li>نموذجا «القيادة» و«المحتوى» لا يحملان هوية مستخدم — لا ربط مزدوج لهما.</li>
+        <li>لا تُعرض أرقام قومية أو أرقام واتساب أو إيميلات في أي واجهة؛ تُستخدم للربط الداخلي فقط.</li>
+        <li>كل القيم غير القابلة للحساب من البيانات تظهر «—» أو «غير متاح»؛ لا تُخمَّن أرقام.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sig-block">
+    <div class="sig-line">أُعد هذا التقرير آليًا من نظام المتابعة التشغيلية لكامب جذور</div>
+    <div class="sig-line micro">التاريخ: <span id="report-date"></span> — البيانات: النسخة المعتمدة المرفقة (processed-data.json)</div>
+  </section>
+</main>
+
+<script>window.__REPORT_MODE__ = true;</script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script src="data/bundled-data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data-loader.js"></script>
+<script src="js/data-cleaner.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/app.js"></script>
+<script src="js/executive-report.js"></script>
+</body>
+</html>
