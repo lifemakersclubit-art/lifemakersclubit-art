@@ -6,7 +6,7 @@
  *   3) data/processed-data.json (النسخة المعتمدة محليًا / GitHub Pages)
  * ============================================================ */
 (function () {
-  const LS_KEY = 'camp_juzur_ds_v2';
+  const LS_KEY = 'camp_juzur_ds_v3';
   const URL_KEY = 'camp_juzur_url';
   const SOURCE_KEY = 'camp_juzur_src';
   const STAMP_KEY = 'camp_juzur_stamp';

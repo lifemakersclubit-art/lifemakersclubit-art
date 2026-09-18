@@ -84,9 +84,16 @@ window.CAMP_CONFIG = {
     'Mohammed': 'محمود طارق', 'كريم شعير': 'كريم شعير', 'م. كريم شعير': 'كريم شعير', 'كريم': 'كريم شعير',
     'اسراء فتحي': 'إسراء فتحي', 'إسراء فتحي': 'إسراء فتحي', 'اسراء': 'إسراء فتحي', 'إسراء': 'إسراء فتحي',
     'ايه طارق': 'آية طارق', 'د. رضوى محمد': 'د. رضوى محمد', 'منة الله يحيى احمد': 'منة الله يحيى أحمد',
-    '.': null, 'مدار جذور': 'فريق التيسير', 'محمود': 'محمود طارق', 'احمد': 'أحمد الضبع',
-    'Ahmed': 'أحمد الضبع', 'Abdulrhman Ashraf': 'عبدالرحمن أشرف'
+    '.': null, 'مدار جذور': 'فريق التيسير', 'محمود': 'محمود طارق', 'احمد': 'أحمد الضبع', 'أحمد': 'أحمد الضبع',
+    'Ahmed': 'أحمد الضبع', 'Abdulrhman Ashraf': 'عبدالرحمن أشرف',
+    'M. Ahmed': 'أحمد الضبع', 'مهندس احمد': 'أحمد الضبع', 'م احمد': 'أحمد الضبع', 'م. احمد': 'أحمد الضبع',
+    'Kareem': 'كريم شعير', 'Kaream': 'كريم شعير', 'Kareem Shier': 'كريم شعير',
+    'كريم شريف': 'كريم شعير', 'ا. كريم شعير': 'كريم شعير', 'م . كريم شعير': 'كريم شعير',
+    'Google Sheets': 'كريم شعير'
   },
+  /* أسماء يُستبعد كامل بياناتها (تجاهل الخام المصاحب): لو ظهرت في أي عمود اسم/مدرب
+     تُسقَط سجلاته من كل التحليلات (الحضور/التقييم/التاسكات/التسجيل). */
+  excludeNameTokens: ['ضبع', 'ضبغ', 'ضباع', 'ضيع', 'دباء', 'دباب', 'eldabaa', 'dabaa'],
   /* تطبيع أسماء الجلسات */
   sessionNormalization: {
     'القيادة': 'Leadership (القيادة)', 'القياده': 'Leadership (القيادة)', 'Leadership': 'Leadership (القيادة)',
@@ -95,8 +102,11 @@ window.CAMP_CONFIG = {
     'Branding': 'Branding (براندنج)', 'براندينج': 'Branding (براندنج)', 'براندج': 'Branding (براندنج)',
     'Dranding': 'Branding (براندنج)', 'ورشة Branding': 'Branding (براندنج)', 'ورشةBranding': 'Branding (براندنج)',
     'جرافيك': 'Branding (براندنج)',
-    'Google sheets': 'Google Sheets (IT)', 'Google sheet': 'Google Sheets (IT)', 'جوجل شيت': 'Google Sheets (IT)',
-    'IT': 'Google Sheets (IT)',
+    'Google sheets': 'Google Sheets (IT)', 'Google sheet': 'Google Sheets (IT)', 'Google Sheet': 'Google Sheets (IT)',
+    'Google Sheets': 'Google Sheets (IT)', 'جوجل شيت': 'Google Sheets (IT)', 'جوجل شيت متقدم': 'Google Sheets (IT)',
+    'Advanced google sheets': 'Google Sheets (IT)', 'Advanced Google Sheets': 'Google Sheets (IT)',
+    'ورشة google sheets': 'Google Sheets (IT)', 'ورشة Google Sheets الأولى': 'Google Sheets (IT)',
+    'IT Google Sheets': 'Google Sheets (IT)', 'IT': 'Google Sheets (IT)',
     'جذور': 'جذور', 'كامب جذور': 'جذور', 'كانفا': 'Canva', 'كانفا بلس': 'Canva'
   },
   /* ربط مساقات التاسكات بسياقات الكامب العرضية */

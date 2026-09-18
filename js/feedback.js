@@ -93,7 +93,7 @@
 
   function renderSessions(fb) {
     const el = document.getElementById('session-table');
-    const rows = fb.sessionPerf.slice(0, 40).map(function (s) {
+    const rows = fb.sessionPerf.slice(0, 5).map(function (s) {
       return '<tr><td>' + esc(s.session) + '</td>' +
         '<td class="num">' + s.n + '</td>' +
         '<td class="num">' + (s.overall.mean == null ? '—' : FMT().stat2(s.overall.mean)) + '</td>' +

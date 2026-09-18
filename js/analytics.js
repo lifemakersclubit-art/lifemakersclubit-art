@@ -676,6 +676,7 @@
       if (!ts || ts === 'Timestamp' || /^timestamp$/i.test(ts)) return false;
       const nid = get(r, 'National ID');
       const name = get(r, 'Full Name');
+      if (DC.isExcludedName(name)) return false;
       return ts || nid || name;
     });
 

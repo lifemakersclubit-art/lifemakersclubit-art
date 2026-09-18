@@ -64,6 +64,15 @@
     t = t.replace(/\s+/g, '').toLowerCase();
     return t;
   }
+  /* استبعاد أي سجل يحمل اسمًا مستثنى (حسب قائمة config.excludeNameTokens) */
+  function isExcludedName(raw) {
+    const s = String(raw == null ? '' : raw).toLowerCase();
+    const toks = (C.excludeNameTokens || []);
+    for (let i = 0; i < toks.length; i++) {
+      if (s.indexOf(String(toks[i]).toLowerCase()) !== -1) return true;
+    }
+    return false;
+  }
   function normTrainer(raw) {
     const key = (raw || '').trim();
     if (!key) return null;
@@ -73,7 +82,7 @@
     // احتياط: توحيد لغوي إن لم يوجد في الجدول
     if (lower.indexOf('الضبع') !== -1) return 'أحمد الضبع';
     if (lower.indexOf('محمود') !== -1 || lower.indexOf('طارق') !== -1) return 'محمود طارق';
-    if (lower.indexOf('كريم') !== -1) return 'كريم شعير';
+    if (lower.indexOf('كريم') !== -1 || lower.indexOf('kareem') !== -1 || lower.indexOf('kaream') !== -1) return 'كريم شعير';
     if (lower.indexOf('اسراء') !== -1 || lower.indexOf('اسر اسراء') !== -1) return 'إسراء فتحي';
     return key;
   }
@@ -105,6 +114,7 @@
       const track = (r[2] || '').trim();
       const rawDate = r[3] == null ? '' : String(r[3]).trim();
       const id = (r[4] || '').trim();
+      if (isExcludedName(name)) continue;
       const date = parseDate(rawDate);
       let dateOutlier = false;
       if (date) {
@@ -136,6 +146,8 @@
       const r = rows[i];
       if (!r || r.length < 30) continue;
       if (!String(r[0] || '').trim() && !String(r[2] || '').trim()) continue;
+      if (isExcludedName(r[2])) continue;
+      if (normTrainer(r[2]) === 'أحمد الضبع') continue;
       const uuid = (r[29] || '').trim();
       const dims = {};
       let dimCount = 0;
@@ -192,6 +204,7 @@
       const name = (r[1] || '').trim();
       const whatsapp = (r[2] || '').trim();
       const track = (r[3] || '').trim();
+      if (isExcludedName(name)) continue;
       // الرابط يظهر غالبًا في العمود 5 وبعض السجلات في العمود 4
       const link = (r[5] && (r[5] || '').indexOf('http') !== -1) ? (r[5] || '').trim() : ((r[4] || '').trim() || (r[5] || '').trim());
       const file = (r[5] || '').trim();
@@ -214,12 +227,11 @@
 
   /* ---------- الاختبارات: تصنيف النموذج + الهوية + التحقق من الدرجة ---------- */
   const EXAMS = {
-    'gsheets-basic':    { label: 'Google Sheets (أساسي / IT)',     max: 7  },
-    'gsheets-advanced': { label: 'Google Sheets (متقدم / IT)',     max: 7  },
-    'leadership':       { label: 'القيادة (Leadership)',           max: 7  },
-    'brand-ai':         { label: 'براندنج / ذكاء اصطناعي',        max: 7  },
-    'content':          { label: 'المحتوى (Content Marketing)',    max: 12 },
-    'unknown':          { label: 'غير محدد',                       max: 7  }
+    'gsheets-basic':    { label: 'Google Sheets (IT)',                  max: 7  },
+    'leadership':       { label: 'القيادة (Leadership)',               max: 7  },
+    'brand-ai':         { label: 'براندنج / ذكاء اصطناعي',            max: 7  },
+    'content':          { label: 'المحتوى (Content Marketing)',        max: 12 },
+    'unknown':          { label: 'غير محدد',                           max: 7  }
   };
 
   function contentJoined(r) { return r.join('|'); }
@@ -244,9 +256,9 @@
     // 4) براندنج / AI
     if (/الـ Logo هو|مجموعة متكاملة من العناصر والقواعد البصرية|تتعلم من كميات كبيرة من البيانات|صورة لشخص أو أيقونة|صمم بوستر|فيديو له Hook|لماذا قد يعطي الذكاء الاصطناعي|الأنماط والاحتمالات التي تعلمها|تحديد المكانة والصورة|الهوية البصرية|أدوات الذكاء الاصطناعي التوليدي|توليد الشخص كعنصر|إعادة صياغة الـPrompt|التوازن والاتزان البصري|الألوان الأساسية|الأحمر والأصفر والأزرق|الـ Pixel|Vector|PNG|SVG|RGB|CMYK|دليل الهوية|Brand Guidelines|ملصق|مصمم جرافيك/.test(s)) return 'brand-ai';
 
-    // 5) Google Sheets متقدم: إجابات بصيغ + هوية في أي عمود متاح (name@3 + هاتف/نid)
+    // 5) Google Sheets متقدم: إجابات بصيغ + هوية في أي عمود متاح — لا يوجد مستوى منفصل، يُدمج في الأساسي
     if (isArabicName(c3) && hasFormula(s) &&
-        (isPhone(c4) || isPhone(r[1]) || isNid(c4) || isNid13(c5))) return 'gsheets-advanced';
+        (isPhone(c4) || isPhone(r[1]) || isNid(c4) || isNid13(c5))) return 'gsheets-basic';
 
     return 'unknown';
   }
@@ -344,7 +356,7 @@
   }
 
   window.DataCleaner = {
-    parseDate, normName, normTrainer, normSession, isArabicName, isNid, isPhone, isEmail,
+    parseDate, normName, normTrainer, normSession, isArabicName, isNid, isPhone, isEmail, isExcludedName,
     cleanAttendance, cleanFeedback, cleanAssignment, cleanQuiz,
     classifyExam, isHeaderRow, extractIdentity, identityKey, identityKeyMethod,
     EXAMS
