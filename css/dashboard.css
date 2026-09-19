@@ -163,9 +163,6 @@
   background: var(--c-card);
   border-bottom: 1px solid var(--c-line);
   padding: .7rem 1.4rem;
-  position: sticky;
-  top: var(--header-h);
-  z-index: 40;
 }
 
 .filter-row {

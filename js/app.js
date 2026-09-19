@@ -246,6 +246,16 @@
       }
     });
 
+    // على الجوال: إغلاق القائمة الجانبية عند الضغط خارجها (الطبقة الخلفية)
+    document.addEventListener('click', function (e) {
+      if (!document.body.classList.contains('nav-open')) return;
+      const tray = document.querySelector('.app-sidebar');
+      if (!tray) return;
+      if (tray.contains(e.target)) return;
+      if (e.target.closest && e.target.closest('.app-header')) return;
+      document.body.classList.remove('nav-open');
+    });
+
     // تحديث عنوان الصفحة من data-page
     const t = document.querySelector('[data-page-title]');
     if (t && window.__PAGE_TITLE__) t.textContent = window.__PAGE_TITLE__;
